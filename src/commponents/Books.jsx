@@ -15,7 +15,7 @@ const Books = () => {
   const fetchBooks = async () => {
     const booksCollection = collection(db, 'books');
     const booksSnapshot = await getDocs(booksCollection);
-    const booksList = booksSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    const booksList = booksSnapshot.docs.map(doc => ({...doc.data() }));
     setBooks(booksList);
     setRecommendedBook(getRecommendedBook(booksList));
   };
