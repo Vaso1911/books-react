@@ -22,7 +22,7 @@ const Books = () => {
 
   useEffect(() => {
     fetchBooks();
-  });
+  },[]);
 
   const getRecommendedBook = (books) => {
     const threeYearsAgo = new Date().getFullYear() - 3;
