@@ -19,7 +19,6 @@ const Books = () => {
     const booksList = booksSnapshot.docs.map(doc => ({...doc.data() }));
     setBooks(booksList);
     setRecommendedBook(getRecommendedBook(booksList));
-    console.log(booksCollection, booksList);
   };
 
   useEffect(() => {
@@ -34,8 +33,8 @@ console.log(bestBooks);
     if (bestBooks.length > 0) {
       const maxRating = bestBooks[0].rating;
       const highestRatedBooks = bestBooks.filter(book => book.rating === maxRating);
-
       return  highestRatedBooks[Math.floor(Math.random() * highestRatedBooks.length)] 
+
 
     }
 
@@ -58,10 +57,7 @@ console.log(bestBooks);
       return b - a;
     });
 
-  // sortedYears.forEach(year => {
-  //   groupedBooks[year].sort((a, b) => a.title.localeCompare(b.title));
 
-  // });
   const shuffleArray = (array) => {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -85,6 +81,7 @@ console.log(bestBooks);
       }, [])
       .flatMap(group => shuffleArray(group));
   });
+
   const handleBookClick = (isbn, e) => {
     e.preventDefault();
     if (isbn) {
@@ -98,6 +95,7 @@ console.log(bestBooks);
       fetchBooks();
     } catch (error) {
       console.error('Ошибка при удалении: ', error);
+
     }
   };
 
@@ -165,6 +163,7 @@ console.log(bestBooks);
       )}
       {showAddModal && (
         <AddBook onClose={handleModalClose} onBookAdded={fetchBooks} />
+
       )}
     </Container>
   );
